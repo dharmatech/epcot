@@ -1,0 +1,4 @@
+(agave
+ git
+ "git://github.com/dharmatech/agave.git"
+ (srfi))

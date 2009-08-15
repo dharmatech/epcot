@@ -1,0 +1,4 @@
+(srfi
+ launchpad
+ "lp:~scheme-libraries-team/scheme-libraries/srfi"
+ ())
