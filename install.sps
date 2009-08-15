@@ -10,22 +10,35 @@
 
 (define (install-package name)
 
-  (let ((entry (find (lambda (entry)
-                       (eq? (entry-name entry) name))
-                     epcot-registry)))
+  (let ((entry (read-entry name)))
 
-    (case (entry-backend entry)
+    (current-directory library-home)
 
-      ((launchpad)
-       (current-directory library-home)
-       (system (string-append "bzr branch "
-                              (entry-address entry))))
-       
-      ((git)
-       (for-each install-package (entry-dependencies entry))
-       (current-directory library-home)
-       (system (string-append "git clone "
-                              (entry-address entry)))))))
+    (if (file-exists? (symbol->string name))
+
+        (display "Already installed\n")
+        
+        (begin
+
+          (for-each install-package (entry-dependencies entry))
+
+          (case (entry-backend entry)
+
+            ((launchpad)
+             (system (string-append "bzr branch "
+                                    (entry-address entry))))
+            
+            ((git)
+             (system (string-append "git clone "
+                                    (entry-address entry))))
+
+            ((http-tar-gz)
+
+             (system (string-append "wget -O out.tar.gz " (entry-address entry)))
+
+             (system "tar -xvzf out.tar.gz")
+
+             (system "rm out.tar.gz")))))))
 
 (install-package
  (string->symbol
