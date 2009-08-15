@@ -6,7 +6,7 @@
   (import (rnrs)
           (epcot core))
 
-  (define epcot-registry-location "/root/epcot/registry")
+  (define epcot-registry-location "/usr/local/lib/scheme/epcot/registry")
 
   (define (read-entry name)
 
