@@ -1,0 +1,4 @@
+(numero
+ git
+ "git://github.com/dharmatech/numero.git"
+ (srfi xitomatl))

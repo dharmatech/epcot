@@ -1,0 +1,4 @@
+(mpl
+ git
+ "git://github.com/dharmatech/mpl.git"
+ (srfi numero xitomatl))
