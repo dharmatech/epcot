@@ -3,7 +3,8 @@
 
         (only (ikarus)
               current-directory
-              system)
+              system
+              getenv)
         
         (epcot core)
         (epcot registry))
@@ -12,7 +13,8 @@
 
   (let ((entry (read-entry name)))
 
-    (current-directory library-home)
+    (current-directory (or (getenv "EPCOT_LIBRARIES")
+                           library-home))
 
     (if (file-exists? (symbol->string name))
 
