@@ -4,7 +4,7 @@
   (export read-entry)
 
   (import (rnrs)
-          (only (ikarus) getenv)
+          (epcot os misc)
           (epcot core))
 
   (define registry-location "/usr/local/lib/scheme/epcot/registry")

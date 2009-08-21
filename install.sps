@@ -1,11 +1,6 @@
 
 (import (rnrs)
-
-        (only (ikarus)
-              current-directory
-              system
-              getenv)
-        
+        (epcot os misc)
         (epcot core)
         (epcot registry))
 
